@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="24e0cd3b716e4e9894e871bbf3daed4d" Name="Diagram1">
-        <EntityTypeShape EntityType="GalleryModel.Album" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.Comment" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.Image" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.User" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="GalleryModel.FK_Albums_Albums" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Albums_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Images_Albums" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Comments_Images" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Comments_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GalleryModel.Album" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="GalleryModel.Comment" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="GalleryModel.Image" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="GalleryModel.User" Width="1.5" PointX="0.75" PointY="1.375" />
+        <AssociationConnector Association="GalleryModel.FK_Albums_Albums" />
+        <AssociationConnector Association="GalleryModel.FK_Albums_Users" />
+        <AssociationConnector Association="GalleryModel.FK_Images_Albums" />
+        <AssociationConnector Association="GalleryModel.FK_Comments_Images" />
+        <AssociationConnector Association="GalleryModel.FK_Comments_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

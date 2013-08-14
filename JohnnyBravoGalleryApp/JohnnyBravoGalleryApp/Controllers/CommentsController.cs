@@ -29,15 +29,10 @@ namespace JohnnyBravoGalleryApp.Controllers
             //TODO: Validate
             if (ModelState.IsValid)
             {
-                var user = this.repos.UserRepo.Get(5);
-                comment.User = user;
-
-                var image = this.repos.ImageRepo.Get(comment.ImageId);
-                comment.Image = image;
-
                 this.repos.CommentRepo.Add(comment);
+                var newCom = this.repos.CommentRepo.Get(comment.CommentId);
 
-                CommentModel commentModel = CommentModel.CreateCommentModelFromEntity(comment);
+                CommentModel commentModel = CommentModel.CreateCommentModelFromEntity(newCom);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, commentModel);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = commentModel.CommentId }));

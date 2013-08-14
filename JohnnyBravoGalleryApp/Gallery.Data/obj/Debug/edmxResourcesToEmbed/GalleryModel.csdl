@@ -6,126 +6,126 @@
     <EntitySet Name="Images" EntityType="GalleryModel.Image" />
     <EntitySet Name="Users" EntityType="GalleryModel.User" />
     <AssociationSet Name="FK_Albums_Albums" Association="GalleryModel.FK_Albums_Albums">
-      <End Role="Albums" EntitySet="Albums" />
-      <End Role="Albums1" EntitySet="Albums" />
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Album1" EntitySet="Albums" />
     </AssociationSet>
     <AssociationSet Name="FK_Albums_Users" Association="GalleryModel.FK_Albums_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Albums" EntitySet="Albums" />
+      <End Role="User" EntitySet="Users" />
+      <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
     <AssociationSet Name="FK_Images_Albums" Association="GalleryModel.FK_Images_Albums">
-      <End Role="Albums" EntitySet="Albums" />
-      <End Role="Images" EntitySet="Images" />
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Image" EntitySet="Images" />
     </AssociationSet>
     <AssociationSet Name="FK_Comments_Images" Association="GalleryModel.FK_Comments_Images">
-      <End Role="Images" EntitySet="Images" />
-      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Comment" EntitySet="Comments" />
     </AssociationSet>
     <AssociationSet Name="FK_Comments_Users" Association="GalleryModel.FK_Comments_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Comments" EntitySet="Comments" />
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Album">
     <Key>
       <PropertyRef Name="AlbumId" />
     </Key>
-    <Property Name="AlbumId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="ParentAlbumId" Type="Int32" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-    <Property Name="UserId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Albums1" Relationship="GalleryModel.FK_Albums_Albums" FromRole="Albums" ToRole="Albums1" />
-    <NavigationProperty Name="Album1" Relationship="GalleryModel.FK_Albums_Albums" FromRole="Albums1" ToRole="Albums" />
-    <NavigationProperty Name="User" Relationship="GalleryModel.FK_Albums_Users" FromRole="Albums" ToRole="Users" />
-    <NavigationProperty Name="Images" Relationship="GalleryModel.FK_Images_Albums" FromRole="Albums" ToRole="Images" />
+    <Property Type="Int32" Name="AlbumId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ParentAlbumId" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="Albums1" Relationship="GalleryModel.FK_Albums_Albums" FromRole="Album" ToRole="Album1" />
+    <NavigationProperty Name="Album1" Relationship="GalleryModel.FK_Albums_Albums" FromRole="Album1" ToRole="Album" />
+    <NavigationProperty Name="User" Relationship="GalleryModel.FK_Albums_Users" FromRole="Album" ToRole="User" />
+    <NavigationProperty Name="Images" Relationship="GalleryModel.FK_Images_Albums" FromRole="Album" ToRole="Image" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
       <PropertyRef Name="CommentId" />
     </Key>
-    <Property Name="CommentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="ImageId" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Image" Relationship="GalleryModel.FK_Comments_Images" FromRole="Comments" ToRole="Images" />
-    <NavigationProperty Name="User" Relationship="GalleryModel.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+    <Property Type="Int32" Name="CommentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ImageId" Nullable="false" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="Image" Relationship="GalleryModel.FK_Comments_Images" FromRole="Comment" ToRole="Image" />
+    <NavigationProperty Name="User" Relationship="GalleryModel.FK_Comments_Users" FromRole="Comment" ToRole="User" />
   </EntityType>
   <EntityType Name="Image">
     <Key>
       <PropertyRef Name="ImageId" />
     </Key>
-    <Property Name="ImageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="AlbumId" Type="Int32" Nullable="false" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-    <Property Name="Url" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="Album" Relationship="GalleryModel.FK_Images_Albums" FromRole="Images" ToRole="Albums" />
-    <NavigationProperty Name="Comments" Relationship="GalleryModel.FK_Comments_Images" FromRole="Images" ToRole="Comments" />
+    <Property Type="Int32" Name="ImageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="AlbumId" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Url" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Album" Relationship="GalleryModel.FK_Images_Albums" FromRole="Image" ToRole="Album" />
+    <NavigationProperty Name="Comments" Relationship="GalleryModel.FK_Comments_Images" FromRole="Image" ToRole="Comment" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserId" />
     </Key>
-    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="Albums" Relationship="GalleryModel.FK_Albums_Users" FromRole="Users" ToRole="Albums" />
-    <NavigationProperty Name="Comments" Relationship="GalleryModel.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Albums" Relationship="GalleryModel.FK_Albums_Users" FromRole="User" ToRole="Album" />
+    <NavigationProperty Name="Comments" Relationship="GalleryModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
   </EntityType>
   <Association Name="FK_Albums_Albums">
-    <End Role="Albums" Type="GalleryModel.Album" Multiplicity="0..1" />
-    <End Role="Albums1" Type="GalleryModel.Album" Multiplicity="*" />
+    <End Type="GalleryModel.Album" Role="Album" Multiplicity="0..1" />
+    <End Type="GalleryModel.Album" Role="Album1" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Albums">
+      <Principal Role="Album">
         <PropertyRef Name="AlbumId" />
       </Principal>
-      <Dependent Role="Albums1">
+      <Dependent Role="Album1">
         <PropertyRef Name="ParentAlbumId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Albums_Users">
-    <End Role="Users" Type="GalleryModel.User" Multiplicity="1" />
-    <End Role="Albums" Type="GalleryModel.Album" Multiplicity="*" />
+    <End Type="GalleryModel.User" Role="User" Multiplicity="1" />
+    <End Type="GalleryModel.Album" Role="Album" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users">
+      <Principal Role="User">
         <PropertyRef Name="UserId" />
       </Principal>
-      <Dependent Role="Albums">
+      <Dependent Role="Album">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Images_Albums">
-    <End Role="Albums" Type="GalleryModel.Album" Multiplicity="1" />
-    <End Role="Images" Type="GalleryModel.Image" Multiplicity="*" />
+    <End Type="GalleryModel.Album" Role="Album" Multiplicity="1" />
+    <End Type="GalleryModel.Image" Role="Image" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Albums">
+      <Principal Role="Album">
         <PropertyRef Name="AlbumId" />
       </Principal>
-      <Dependent Role="Images">
+      <Dependent Role="Image">
         <PropertyRef Name="AlbumId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Comments_Images">
-    <End Role="Images" Type="GalleryModel.Image" Multiplicity="1" />
-    <End Role="Comments" Type="GalleryModel.Comment" Multiplicity="*" />
+    <End Type="GalleryModel.Image" Role="Image" Multiplicity="1" />
+    <End Type="GalleryModel.Comment" Role="Comment" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Images">
+      <Principal Role="Image">
         <PropertyRef Name="ImageId" />
       </Principal>
-      <Dependent Role="Comments">
+      <Dependent Role="Comment">
         <PropertyRef Name="ImageId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Comments_Users">
-    <End Role="Users" Type="GalleryModel.User" Multiplicity="1" />
-    <End Role="Comments" Type="GalleryModel.Comment" Multiplicity="*" />
+    <End Type="GalleryModel.User" Role="User" Multiplicity="1" />
+    <End Type="GalleryModel.Comment" Role="Comment" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users">
+      <Principal Role="User">
         <PropertyRef Name="UserId" />
       </Principal>
-      <Dependent Role="Comments">
+      <Dependent Role="Comment">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>

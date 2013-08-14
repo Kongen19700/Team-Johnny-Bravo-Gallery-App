@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gallery.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -27,6 +28,8 @@ namespace Gallery.Repositories
 
         public void Add(T item)
         {
+            ReinitializeContext();
+
             DbEntityEntry entry = this.Context.Entry(item);
             if (entry.State != EntityState.Detached)
             {
@@ -40,8 +43,16 @@ namespace Gallery.Repositories
             this.Context.SaveChanges();
         }
 
+        private void ReinitializeContext()
+        {
+            this.Context = (DbContext) Activator.CreateInstance(this.Context.GetType(), null);
+            this.DbSet = this.Context.Set<T>();
+        }
+
         public virtual void Delete(T entity)
         {
+            ReinitializeContext();
+
             DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State != EntityState.Deleted)
             {
@@ -58,6 +69,8 @@ namespace Gallery.Repositories
 
         public void Delete(int id)
         {
+            ReinitializeContext();
+
             var entity = this.Get(id);
 
             if (entity != null)
@@ -68,16 +81,22 @@ namespace Gallery.Repositories
 
         public IQueryable<T> GetAll()
         {
+            ReinitializeContext();
+
             return this.DbSet;
         }
 
         public T Get(int id)
         {
+            ReinitializeContext();
+
             return this.DbSet.Find(id);
         }
 
         public void Update(int id, T item)
         {
+            ReinitializeContext();
+
             DbEntityEntry entry = this.Context.Entry(item);
             if (entry.State == EntityState.Detached)
             {
