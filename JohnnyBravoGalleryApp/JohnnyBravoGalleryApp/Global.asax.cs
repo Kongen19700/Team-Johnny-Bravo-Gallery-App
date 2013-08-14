@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JohnnyBravoGalleryApp.DependencyResolver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,9 @@ namespace JohnnyBravoGalleryApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+            config.DependencyResolver = new DbDependencyResolver();
         }
     }
 }

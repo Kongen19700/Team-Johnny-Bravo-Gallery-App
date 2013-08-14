@@ -142,3 +142,7 @@ D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\JohnnyBravoG
 D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Repositories.dll
 D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Data.pdb
 D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Repositories.pdb
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Data.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Repositories.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Data.pdb
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\Gallery.Repositories.pdb
