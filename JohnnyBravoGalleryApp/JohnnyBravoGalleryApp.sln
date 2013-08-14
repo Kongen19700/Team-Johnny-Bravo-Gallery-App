@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JohnnyBravoGalleryApp", "JohnnyBravoGalleryApp\JohnnyBravoGalleryApp.csproj", "{06B310C8-9019-439C-8309-29D834097CEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Data", "Gallery.Data\Gallery.Data.csproj", "{40F631EB-DC1E-4B2F-A0E7-7C47ACF68613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Repositories", "Gallery.Repositories\Gallery.Repositories.csproj", "{90C0C11D-1E06-4B14-963B-1033281362C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{06B310C8-9019-439C-8309-29D834097CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06B310C8-9019-439C-8309-29D834097CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06B310C8-9019-439C-8309-29D834097CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40F631EB-DC1E-4B2F-A0E7-7C47ACF68613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40F631EB-DC1E-4B2F-A0E7-7C47ACF68613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40F631EB-DC1E-4B2F-A0E7-7C47ACF68613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40F631EB-DC1E-4B2F-A0E7-7C47ACF68613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C0C11D-1E06-4B14-963B-1033281362C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C0C11D-1E06-4B14-963B-1033281362C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C0C11D-1E06-4B14-963B-1033281362C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C0C11D-1E06-4B14-963B-1033281362C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

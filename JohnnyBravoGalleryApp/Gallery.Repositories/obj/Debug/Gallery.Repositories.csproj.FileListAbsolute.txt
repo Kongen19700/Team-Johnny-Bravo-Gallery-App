@@ -1,0 +1,4 @@
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.pdb
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.pdb
