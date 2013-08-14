@@ -2,3 +2,13 @@ C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Te
 C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.pdb
 C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.dll
 C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.pdb
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.dll.config
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.dll
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Repositories.pdb
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\EntityFramework.dll
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Data.dll
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\Gallery.Data.pdb
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\bin\Debug\EntityFramework.xml
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.csprojResolveAssemblyReference.cache
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.dll
+D:\Bobby\Edu\1TERELIK\Services\TeamWork\trunk\JohnnyBravoGalleryApp\Gallery.Repositories\obj\Debug\Gallery.Repositories.pdb
