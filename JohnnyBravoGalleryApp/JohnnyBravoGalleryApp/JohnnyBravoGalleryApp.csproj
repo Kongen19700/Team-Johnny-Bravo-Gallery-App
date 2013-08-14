@@ -171,6 +171,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlbumFullModel.cs" />
+    <Compile Include="Models\AlbumModel.cs" />
+    <Compile Include="Models\CommentFullModel.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\GalleryFullModel.cs" />
+    <Compile Include="Models\GalleryModel.cs" />
+    <Compile Include="Models\ImageFullModel.cs" />
+    <Compile Include="Models\ImageModel.cs" />
+    <Compile Include="Models\UserFullModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -290,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

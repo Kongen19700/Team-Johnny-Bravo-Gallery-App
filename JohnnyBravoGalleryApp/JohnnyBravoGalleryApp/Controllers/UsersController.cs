@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Http;
 using Gallery.Data;
 using Gallery.Repositories;
+using JohnnyBravoGalleryApp.Models;
 
 namespace JohnnyBravoGalleryApp.Controllers
 {
@@ -25,10 +26,14 @@ namespace JohnnyBravoGalleryApp.Controllers
         private GalleryEntities db = new GalleryEntities();
 
         // GET api/Users
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserFullModel> GetUsers()
         {
-            var users = db.Users.Include(u => u.Gallery);
-            return users.AsEnumerable();
+            var users = db.Users.Include(u => u.Gallery).AsEnumerable();
+            return users.Select(x => new UserFullModel()
+            {
+                UserId = x.UserId,
+                Username = x.Username,
+            });
         }
 
         // GET api/Users/5
