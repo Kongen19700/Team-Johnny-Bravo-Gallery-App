@@ -20,13 +20,11 @@ namespace Gallery.Data
         }
     
         public int ImageId { get; set; }
-        public Nullable<int> AlbumId { get; set; }
-        public Nullable<int> GalleryId { get; set; }
+        public int AlbumId { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
     
         public virtual Album Album { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Gallery Gallery { get; set; }
     }
 }

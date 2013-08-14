@@ -17,7 +17,7 @@ namespace Gallery.Data
         public int CommentId { get; set; }
         public string Text { get; set; }
         public int ImageId { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public int UserId { get; set; }
     
         public virtual Image Image { get; set; }
         public virtual User User { get; set; }

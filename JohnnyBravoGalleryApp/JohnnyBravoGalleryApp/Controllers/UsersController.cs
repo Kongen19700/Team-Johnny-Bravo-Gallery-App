@@ -23,121 +23,28 @@ namespace JohnnyBravoGalleryApp.Controllers
             this.repos = repos;
         }
 
-        private GalleryEntities db = new GalleryEntities();
-
-        // GET api/Users
-        public IEnumerable<UserFullModel> GetUsers()
+        [HttpPost]
+        public HttpResponseMessage PostUser([FromBody]User user)
         {
-            var users = db.Users.Include(u => u.Gallery).AsEnumerable();
-            return users.Select(x => new UserFullModel()
-            {
-                UserId = x.UserId,
-                Username = x.Username,
-            });
-        }
+            var theUser = repos.UserRepo.GetAll().FirstOrDefault(u => u.Username == user.Username);
 
-        // GET api/Users/5
-        public User GetUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
+            if (theUser == null)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+                repos.UserRepo.Add(user);
             }
 
-            return user;
-        }
-
-        // PUT api/Users/5
-        public HttpResponseMessage PutUser(int id, User user)
-        {
-            if (ModelState.IsValid && id == user.UserId)
-            {
-                db.Entry(user).State = EntityState.Modified;
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // POST api/Users
-        public HttpResponseMessage PostUser(User user)
-        {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                UserModel userModel = UserModel.CreateUserModelFromEntity(user);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, user);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = user.UserId }));
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, userModel);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = userModel.UserId }));
                 return response;
             }
             else
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-        }
-
-        // DELETE api/Users/5
-        public HttpResponseMessage DeleteUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            db.Users.Remove(user);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, user);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        public UserFullModel CreateFullUserModelFromEntity(User entity)
-        {
-            return new UserFullModel()
-            {
-                UserId = entity.UserId,
-                Username = entity.Username,
-                Comments = entity.Comments.Select(c => new CommentModel()
-                {
-                    CommentId = c.CommentId,
-                    ImageId = c.ImageId,
-                    Text = c.Text,
-                    UserId = c.UserId,
-                }),
-                Gallery = new GalleryModel()
-                {
-                    GalleryId = entity.Gallery.GalleryId,
-                    Title = entity.Gallery.Title,
-                },
-            };
         }
     }
 }

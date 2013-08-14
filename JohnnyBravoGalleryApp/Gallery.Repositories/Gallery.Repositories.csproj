@@ -50,12 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gallery.Data\Gallery.Data.csproj">
-      <Project>{40f631eb-dc1e-4b2f-a0e7-7c47acf68613}</Project>
-      <Name>Gallery.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

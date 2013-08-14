@@ -21,13 +21,13 @@ namespace Gallery.Data
         }
     
         public int AlbumId { get; set; }
-        public int GalleryId { get; set; }
         public Nullable<int> ParentAlbumId { get; set; }
         public string Title { get; set; }
+        public int UserId { get; set; }
     
         public virtual ICollection<Album> Albums1 { get; set; }
         public virtual Album Album1 { get; set; }
-        public virtual Gallery Gallery { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<Image> Images { get; set; }
     }
 }

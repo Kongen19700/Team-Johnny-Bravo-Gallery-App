@@ -13,12 +13,10 @@ namespace Gallery.Repositories
             IRepository<Album> albumRepo,
             IRepository<Image> imageRepo,
             IRepository<User> userRepo, 
-            IRepository<Gallery.Data.Gallery> galleryRepo,
             IRepository<Comment> commentRepo)
         {
             this.ImageRepo = imageRepo;
             this.AlbumRepo = albumRepo;
-            this.GalleryRepo = galleryRepo;
             this.UserRepo = userRepo;
             this.CommentRepo = commentRepo;
         }
@@ -26,8 +24,6 @@ namespace Gallery.Repositories
         public IRepository<Image> ImageRepo { get; private set; }
 
         public IRepository<Album> AlbumRepo { get; private set; }
-
-        public IRepository<Gallery.Data.Gallery> GalleryRepo { get; private set; }
 
         public IRepository<User> UserRepo { get; private set; }
 

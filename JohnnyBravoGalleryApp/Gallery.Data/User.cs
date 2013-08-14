@@ -16,13 +16,14 @@ namespace Gallery.Data
     {
         public User()
         {
+            this.Albums = new HashSet<Album>();
             this.Comments = new HashSet<Comment>();
         }
     
         public int UserId { get; set; }
         public string Username { get; set; }
     
+        public virtual ICollection<Album> Albums { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Gallery Gallery { get; set; }
     }
 }

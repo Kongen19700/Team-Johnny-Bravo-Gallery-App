@@ -305,10 +305,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gallery.Data\Gallery.Data.csproj">
-      <Project>{40f631eb-dc1e-4b2f-a0e7-7c47acf68613}</Project>
-      <Name>Gallery.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Gallery.Repositories\Gallery.Repositories.csproj">
       <Project>{90c0c11d-1e06-4b14-963b-1033281362c9}</Project>
       <Name>Gallery.Repositories</Name>

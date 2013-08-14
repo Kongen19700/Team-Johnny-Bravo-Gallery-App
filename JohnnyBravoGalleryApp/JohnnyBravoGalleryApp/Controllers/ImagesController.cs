@@ -23,127 +23,38 @@ namespace JohnnyBravoGalleryApp.Controllers
             this.repos = repos;
         }
 
-        private GalleryEntities db = new GalleryEntities();
-
-        // GET api/Images
-        public IEnumerable<Image> GetImages()
+        [HttpGet]
+        public ImageFullModel GetImage(int id)
         {
-            var images = db.Images.Include(i => i.Album).Include(i => i.Gallery);
-            return images.AsEnumerable();
-        }
+            Image image = this.repos.ImageRepo.Get(id);
 
-        // GET api/Images/5
-        public Image GetImage(int id)
-        {
-            Image image = db.Images.Find(id);
             if (image == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return image;
+            ImageFullModel imageModel = ImageFullModel.CreateFullImageModelFromEntity(image);
+
+            return imageModel;
         }
 
-        // PUT api/Images/5
-        public HttpResponseMessage PutImage(int id, Image image)
-        {
-            if (ModelState.IsValid && id == image.ImageId)
-            {
-                db.Entry(image).State = EntityState.Modified;
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // POST api/Images
+        [HttpPost]
         public HttpResponseMessage PostImage(Image image)
         {
-            if (ModelState.IsValid)
-            {
-                db.Images.Add(image);
-                db.SaveChanges();
+            //TODO: Upload image to dropbox, add image entity to db
+            
+            //if (ModelState.IsValid)
+            //{
+            //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, image);
+            //    response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = image.ImageId }));
+            //    return response;
+            //}
+            //else
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //}
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, image);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = image.ImageId }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // DELETE api/Images/5
-        public HttpResponseMessage DeleteImage(int id)
-        {
-            Image image = db.Images.Find(id);
-            if (image == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            db.Images.Remove(image);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, image);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        public ImageFullModel CreateFullImageModelFromEntity(Image entity)
-        {
-            return new ImageFullModel()
-            {
-                ImageId = entity.ImageId,
-                Title = entity.Title,
-                Url = entity.Url,
-                GalleryId = entity.GalleryId,
-                Gallery = new GalleryModel()
-                {
-                    GalleryId = entity.Gallery.GalleryId,
-                    Title = entity.Gallery.Title,
-                },
-                Comments = entity.Comments.Select(c => new CommentModel()
-                {
-                    CommentId = c.CommentId,
-                    ImageId = c.ImageId,
-                    Text = c.Text,
-                    UserId = c.UserId,
-                }),
-                AlbumId = entity.AlbumId,
-                Album = new AlbumModel()
-                {
-                    AlbumId = entity.Album.AlbumId,
-                    GalleryId = entity.Album.GalleryId,
-                    ParentAlbumId = entity.Album.ParentAlbumId,
-                    Title = entity.Album.Title,
-                },
-            };
+            throw new NotImplementedException();
         }
     }
 }

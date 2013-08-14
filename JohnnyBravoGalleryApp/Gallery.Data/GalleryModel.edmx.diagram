@@ -4,20 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b2984b2fb724391b41ca88c4728f407" Name="Diagram1">
-        <EntityTypeShape EntityType="GalleryModel.Album" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.Comment" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.Gallery" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.Image" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GalleryModel.User" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+      <Diagram DiagramId="24e0cd3b716e4e9894e871bbf3daed4d" Name="Diagram1">
+        <EntityTypeShape EntityType="GalleryModel.Album" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalleryModel.Comment" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalleryModel.Image" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalleryModel.User" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="GalleryModel.FK_Albums_Albums" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Albums_Galleries" ManuallyRouted="false" />
+        <AssociationConnector Association="GalleryModel.FK_Albums_Users" ManuallyRouted="false" />
         <AssociationConnector Association="GalleryModel.FK_Images_Albums" ManuallyRouted="false" />
         <AssociationConnector Association="GalleryModel.FK_Comments_Images" ManuallyRouted="false" />
         <AssociationConnector Association="GalleryModel.FK_Comments_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Galleries_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="GalleryModel.FK_Images_Galleries" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
