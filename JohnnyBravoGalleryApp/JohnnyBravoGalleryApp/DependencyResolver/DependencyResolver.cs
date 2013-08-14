@@ -17,10 +17,9 @@ namespace JohnnyBravoGalleryApp.DependencyResolver
         private static IRepository<Image> imageRepo = new EfRepository<Image>(context);
         private static IRepository<Album> albumRepo = new EfRepository<Album>(context);
         private static IRepository<Comment> comentRepo = new EfRepository<Comment>(context);
-        private static IRepository<Gallery.Data.Gallery> galleryRepo = new EfRepository<Gallery.Data.Gallery>(context);
 
         private readonly AllRepositories repos =
-            new AllRepositories(albumRepo, imageRepo, userRepo, galleryRepo, comentRepo);
+            new AllRepositories(albumRepo, imageRepo, userRepo, comentRepo);
 
         public IDependencyScope BeginScope()
         {

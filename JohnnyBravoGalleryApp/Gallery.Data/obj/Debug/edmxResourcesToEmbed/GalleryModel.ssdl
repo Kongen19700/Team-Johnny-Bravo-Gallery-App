@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GalleryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GalleryModelStoreContainer">
+    <EntitySet Name="Albums" EntityType="GalleryModel.Store.Albums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="GalleryModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Images" EntityType="GalleryModel.Store.Images" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="GalleryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Albums_Albums" Association="GalleryModel.Store.FK_Albums_Albums">
+      <End Role="Albums" EntitySet="Albums" />
+      <End Role="Albums1" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Albums_Users" Association="GalleryModel.Store.FK_Albums_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Albums" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Images" Association="GalleryModel.Store.FK_Comments_Images">
+      <End Role="Images" EntitySet="Images" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Users" Association="GalleryModel.Store.FK_Comments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_Albums" Association="GalleryModel.Store.FK_Images_Albums">
+      <End Role="Albums" EntitySet="Albums" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Albums">
+    <Key>
+      <PropertyRef Name="AlbumId" />
+    </Key>
+    <Property Name="AlbumId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ParentAlbumId" Type="int" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="ntext" Nullable="false" />
+    <Property Name="ImageId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="ImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AlbumId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Albums_Albums">
+    <End Role="Albums" Type="GalleryModel.Store.Albums" Multiplicity="0..1" />
+    <End Role="Albums1" Type="GalleryModel.Store.Albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Albums">
+        <PropertyRef Name="AlbumId" />
+      </Principal>
+      <Dependent Role="Albums1">
+        <PropertyRef Name="ParentAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Albums_Users">
+    <End Role="Users" Type="GalleryModel.Store.Users" Multiplicity="1" />
+    <End Role="Albums" Type="GalleryModel.Store.Albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Albums">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Images">
+    <End Role="Images" Type="GalleryModel.Store.Images" Multiplicity="1" />
+    <End Role="Comments" Type="GalleryModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Images">
+        <PropertyRef Name="ImageId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ImageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Users">
+    <End Role="Users" Type="GalleryModel.Store.Users" Multiplicity="1" />
+    <End Role="Comments" Type="GalleryModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Images_Albums">
+    <End Role="Albums" Type="GalleryModel.Store.Albums" Multiplicity="1" />
+    <End Role="Images" Type="GalleryModel.Store.Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Albums">
+        <PropertyRef Name="AlbumId" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="AlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

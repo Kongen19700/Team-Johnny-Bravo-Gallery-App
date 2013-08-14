@@ -23,90 +23,30 @@ namespace JohnnyBravoGalleryApp.Controllers
             this.repos = repos;
         }
 
-        private GalleryEntities db = new GalleryEntities();
-
-        // GET api/Comments
-        public IEnumerable<Comment> GetComments()
-        {
-            var comments = db.Comments.Include(c => c.Image).Include(c => c.User);
-            return comments.AsEnumerable();
-        }
-
-        // GET api/Comments/5
-        public Comment GetComment(int id)
-        {
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
-
-            return comment;
-        }
-
-        // PUT api/Comments/5
-        public HttpResponseMessage PutComment(int id, Comment comment)
-        {
-            if (ModelState.IsValid && id == comment.CommentId)
-            {
-                db.Entry(comment).State = EntityState.Modified;
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
         // POST api/Comments
         public HttpResponseMessage PostComment(Comment comment)
         {
+            //TODO: Validate
             if (ModelState.IsValid)
             {
-                db.Comments.Add(comment);
-                db.SaveChanges();
+                var user = this.repos.UserRepo.Get(5);
+                comment.User = user;
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, comment);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = comment.CommentId }));
+                var image = this.repos.ImageRepo.Get(comment.ImageId);
+                comment.Image = image;
+
+                this.repos.CommentRepo.Add(comment);
+
+                CommentModel commentModel = CommentModel.CreateCommentModelFromEntity(comment);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, commentModel);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = commentModel.CommentId }));
                 return response;
             }
             else
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-        }
-
-        // DELETE api/Comments/5
-        public HttpResponseMessage DeleteComment(int id)
-        {
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            db.Comments.Remove(comment);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, comment);
         }
     }
 }

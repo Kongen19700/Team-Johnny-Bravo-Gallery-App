@@ -11,7 +11,7 @@ namespace JohnnyBravoGalleryApp.Models
         public int UserId { get; set; }
         public string Username { get; set; }
 
-        public static UserModel CreateFullUserModelFromEntity(User entity)
+        public static UserModel CreateUserModelFromEntity(User entity)
         {
             return new UserModel()
             {

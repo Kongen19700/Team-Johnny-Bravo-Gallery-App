@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JohnnyBravoGalleryApp", "Jo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Repositories", "Gallery.Repositories\Gallery.Repositories.csproj", "{90C0C11D-1E06-4B14-963B-1033281362C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Data", "Gallery.Data\Gallery.Data.csproj", "{847956C5-DC1F-4636-A3E2-58E32EBB8EA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{90C0C11D-1E06-4B14-963B-1033281362C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C0C11D-1E06-4B14-963B-1033281362C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C0C11D-1E06-4B14-963B-1033281362C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847956C5-DC1F-4636-A3E2-58E32EBB8EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847956C5-DC1F-4636-A3E2-58E32EBB8EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847956C5-DC1F-4636-A3E2-58E32EBB8EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847956C5-DC1F-4636-A3E2-58E32EBB8EA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
