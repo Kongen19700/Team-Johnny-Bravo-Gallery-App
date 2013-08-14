@@ -5,10 +5,10 @@ using System.Web;
 
 namespace JohnnyBravoGalleryApp.Models
 {
-    public class GalleryFullModel
+    public class GalleryFullModel : GalleryModel
     {
-        public ICollection<AlbumModel> Albums { get; set; }
+        public IEnumerable<AlbumModel> Albums { get; set; }
         public UserModel User { get; set; }
-        public ICollection<ImageModel> Images { get; set; }
+        public IEnumerable<ImageModel> Images { get; set; }
     }
 }

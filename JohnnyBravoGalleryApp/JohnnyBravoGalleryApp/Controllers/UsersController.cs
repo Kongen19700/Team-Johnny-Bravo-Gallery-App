@@ -118,5 +118,26 @@ namespace JohnnyBravoGalleryApp.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        public UserFullModel CreateFullUserModelFromEntity(User entity)
+        {
+            return new UserFullModel()
+            {
+                UserId = entity.UserId,
+                Username = entity.Username,
+                Comments = entity.Comments.Select(c => new CommentModel()
+                {
+                    CommentId = c.CommentId,
+                    ImageId = c.ImageId,
+                    Text = c.Text,
+                    UserId = c.UserId,
+                }),
+                Gallery = new GalleryModel()
+                {
+                    GalleryId = entity.Gallery.GalleryId,
+                    Title = entity.Gallery.Title,
+                },
+            };
+        }
     }
 }

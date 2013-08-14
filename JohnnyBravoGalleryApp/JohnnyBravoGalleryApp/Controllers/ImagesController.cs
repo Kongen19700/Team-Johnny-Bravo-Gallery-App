@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Http;
 using Gallery.Data;
 using Gallery.Repositories;
+using JohnnyBravoGalleryApp.Models;
 
 namespace JohnnyBravoGalleryApp.Controllers
 {
@@ -112,6 +113,37 @@ namespace JohnnyBravoGalleryApp.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public ImageFullModel CreateFullImageModelFromEntity(Image entity)
+        {
+            return new ImageFullModel()
+            {
+                ImageId = entity.ImageId,
+                Title = entity.Title,
+                Url = entity.Url,
+                GalleryId = entity.GalleryId,
+                Gallery = new GalleryModel()
+                {
+                    GalleryId = entity.Gallery.GalleryId,
+                    Title = entity.Gallery.Title,
+                },
+                Comments = entity.Comments.Select(c => new CommentModel()
+                {
+                    CommentId = c.CommentId,
+                    ImageId = c.ImageId,
+                    Text = c.Text,
+                    UserId = c.UserId,
+                }),
+                AlbumId = entity.AlbumId,
+                Album = new AlbumModel()
+                {
+                    AlbumId = entity.Album.AlbumId,
+                    GalleryId = entity.Album.GalleryId,
+                    ParentAlbumId = entity.Album.ParentAlbumId,
+                    Title = entity.Album.Title,
+                },
+            };
         }
     }
 }

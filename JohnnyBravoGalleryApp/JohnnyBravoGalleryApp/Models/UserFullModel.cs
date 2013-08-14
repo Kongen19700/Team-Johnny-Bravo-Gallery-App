@@ -7,7 +7,7 @@ namespace JohnnyBravoGalleryApp.Models
 {
     public class UserFullModel : UserModel
     {
-        public ICollection<CommentModel> Comments { get; set; }
+        public IEnumerable<CommentModel> Comments { get; set; }
         public GalleryModel Gallery { get; set; }
     }
 }
