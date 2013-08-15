@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\error.png" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -67,6 +68,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\service-manager.js" />
     <Content Include="Scripts\site-controller.js" />
+    <Content Include="Styles\gallery.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>

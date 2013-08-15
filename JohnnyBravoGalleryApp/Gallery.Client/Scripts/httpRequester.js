@@ -7,7 +7,7 @@ var httpRequester = (function () {
             url: url,
             type: "GET",
             contentType: "application/json",
-            timeout: 5000,
+            timeout: 15000,
             success: successHandler,
             error: errorHandler,
         });
@@ -18,7 +18,7 @@ var httpRequester = (function () {
             url: url,
             type: "POST",
             contentType: "application/json",
-            timeout: 5000,
+            timeout: 15000,
             data: JSON.stringify(data),
             success: successHandler,
             error: errorHandler,

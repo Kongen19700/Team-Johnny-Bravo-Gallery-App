@@ -49,5 +49,28 @@ namespace JohnnyBravoGalleryApp.Controllers
 
             return galleryModel;
         }
+
+        [HttpGet]
+        public IEnumerable<AlbumModel> GetAllGalleries()
+        {
+            var galleriesEntities = this.repos.AlbumRepo.GetAll()
+                .Where(a => a.ParentAlbumId == null || a.ParentAlbumId == 0);
+
+            if (galleriesEntities == null)
+            {
+                var errorResponse = this.Request.CreateErrorResponse(
+                    HttpStatusCode.NotFound, "Items not found");
+                throw new HttpResponseException(errorResponse);
+            }
+
+            var galleriesModels = galleriesEntities.ToList().
+                Select(a => new AlbumModel()
+                {
+                    AlbumId = a.AlbumId,
+                    Title = a.Title,
+                });
+
+            return galleriesModels;
+        }
     }
 }

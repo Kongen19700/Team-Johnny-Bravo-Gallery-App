@@ -16,7 +16,7 @@ var SiteController = Class.create({
     render: function () {
         var self = this;
 
-        //this.attachEventHandlers();
+        this.attachEventHandlers();
 
         if (this.service.isUserLoggedIn()) {
             this.renderGameUI();
@@ -36,7 +36,20 @@ var SiteController = Class.create({
             '</div>');
     },
 
-    renderGalleries: function(receivedData){
+    renderGalleries: function (receivedData) {
+
+        var galleriesHtml = '<div id="galleries">';
+
+        for (var i = 0; i < receivedData.length; i++) {
+            var currentGallery = receivedData[i];
+
+            galleriesHtml +=
+                '<h2 data-gallery-id="' + currentGallery.AlbumId + '">' + currentGallery.Title + '</h2>';
+        }
+
+        galleriesHtml += '</div>';
+
+        this.root.html(galleriesHtml);
         alert('hi');
     },
 
@@ -258,6 +271,8 @@ var SiteController = Class.create({
             }, function (receivedData) {
                 self.errorHandler(receivedData);
             });
+
+            return false;
         });
 
         //this.root.on('click', '#btn-register', function () {

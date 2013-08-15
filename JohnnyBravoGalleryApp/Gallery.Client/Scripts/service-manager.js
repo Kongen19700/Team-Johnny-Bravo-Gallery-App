@@ -52,17 +52,24 @@ var services = (function () {
 
     var UserService = Class.create({
         init: function (url) {
-            //http://team-johnny-bravo-gallery-app.apphb.com/api/user/
-            this.rootUrl = url + "user/";
+            //http://team-johnny-bravo-gallery-app.apphb.com/api/users/
+            this.rootUrl = url + "users/";
         },
         login: function (nickname, successHandler, errorHandler) {
             var user = {
                 username: nickname,
             };
+            var url = this.rootUrl;
+
             httpRequester.postJSON(url, user, function (receivedData) {
+                alert('success');
                 setUserData(receivedData.nickname, receivedData.userId);
                 successHandler(receivedData);
-            }, errorHandler);
+            }, function (receivedData) {
+                alert('error');
+                var a = receivedData;
+                errorHandler(receivedData);
+            });
         },
         logout: function (nickname) {
             clearUserData();
