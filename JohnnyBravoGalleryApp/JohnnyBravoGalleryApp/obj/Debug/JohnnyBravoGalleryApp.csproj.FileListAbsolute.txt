@@ -228,3 +228,4 @@ D:\User Files\My Documents\Telerik Academy\WebTrack\Team-Johnny-Bravo-Gallery-Ap
 D:\User Files\My Documents\Telerik Academy\WebTrack\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\obj\Debug\JohnnyBravoGalleryApp.dll
 D:\User Files\My Documents\Telerik Academy\WebTrack\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\obj\Debug\JohnnyBravoGalleryApp.pdb
 C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\RestSharp.xml
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\JohnnyBravoGalleryApp\bin\DropNet.dll
