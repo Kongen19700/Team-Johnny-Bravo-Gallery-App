@@ -32,6 +32,8 @@ var services = (function () {
             this.comment = new CommentService(url);
         },
         isUserLoggedIn: function () {
+            nickname = localStorage.getItem("gallery-app-nickname");
+            userId = localStorage.getItem("gallery-app-userId");
             if (nickname && userId) {
                 return true;
             }
@@ -40,7 +42,7 @@ var services = (function () {
             }
         },
         getNickname: function () {
-            return nickna;
+            return nickname;
         },
         getUserid: function () {
             return userId;
@@ -62,12 +64,9 @@ var services = (function () {
             var url = this.rootUrl;
 
             httpRequester.postJSON(url, user, function (receivedData) {
-                alert('success');
-                setUserData(receivedData.nickname, receivedData.userId);
+                setUserData(receivedData.Username, receivedData.UserId);
                 successHandler(receivedData);
             }, function (receivedData) {
-                alert('error');
-                var a = receivedData;
                 errorHandler(receivedData);
             });
         },
@@ -85,38 +84,41 @@ var services = (function () {
             var url = this.rootUrl + userId + "/";
             httpRequester.getJSON(url, successHandler, errorHandler);
         },
+        getAllGalleries: function (successHandler, errorHandler) {
+            httpRequester.getJSON(this.rootUrl, successHandler, errorHandler);
+        },
     })
 
     var AlbumService = Class.create({
         init: function (url) {
             //http://team-johnny-bravo-gallery-app.apphb.com/api/albums/
-            this.rootUrl = url + "album/";
+            this.rootUrl = url + "albums/";
         },
-        getAlbum: function (id) {
+        getAlbum: function (id, successHandler, errorHandler) {
             var url = this.rootUrl + id + "/";
             httpRequester.getJSON(url, successHandler, errorHandler);
         },
-        postAlbum: function (userId, title, parentAlbumId) {
+        postAlbum: function (userId, title, parentAlbumId, successHandler, errorHandler) {
             var image = {
                 userId: userId | 0,
                 title: title,
                 parentAlbumId: parentAlbumId | 0,
             };
-            httpRequester.postJSON(url, image, successHandler, errorHandler);
+            httpRequester.postJSON(this.rootUrl, image, successHandler, errorHandler);
         }
     })
 
 
     var ImageService = Class.create({
         init: function (url) {
-            this.rootUrl = url + "images/"
+            //http:/localhost:55/images/GetImage
+            this.rootUrl = url + "image/"
+            //this.rootUrl = 'http://localhost:51015/images/';
         },
-        getImage: function (id) {
+        getImage: function (id, succesHandler, errorHandler) {
             var url = this.rootUrl + id + "/";
+            //var url = this.rootUrl + 'GetImage/' + id;
             httpRequester.getJSON(url, succesHandler, errorHandler);
-        },
-        postImage: function () {
-
         },
     });
 
@@ -124,14 +126,14 @@ var services = (function () {
         init: function (url) {
             this.rootUrl = url + "comments/"
         },
-        postComment: function (text, imageId, userId) {
+        postComment: function (text, imageId, userId, succesHandler, errorHandler) {
             var comment = {
                 text: text,
                 imageId: imageId | 0,
                 userId: userId | 0,
             };
 
-            httpRequester.postJSON(url, commen, succesHandler, errorHandler);
+            httpRequester.postJSON(this.rootUrl, comment, succesHandler, errorHandler);
         }
     });
 

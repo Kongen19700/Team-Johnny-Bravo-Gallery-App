@@ -61,14 +61,22 @@
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\class.js" />
     <Content Include="Scripts\html-escape.js" />
     <Content Include="Scripts\httpRequester.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
     <Content Include="Scripts\service-manager.js" />
     <Content Include="Scripts\site-controller.js" />
+    <Content Include="Styles\css\bootstrap-responsive.min.css" />
+    <Content Include="Styles\css\bootstrap.min.css" />
     <Content Include="Styles\gallery.css" />
+    <Content Include="Styles\img\bg.png" />
+    <Content Include="Styles\img\glyphicons-halflings-white.png" />
+    <Content Include="Styles\img\glyphicons-halflings.png" />
+    <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>

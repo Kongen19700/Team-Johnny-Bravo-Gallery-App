@@ -26,16 +26,28 @@ namespace JohnnyBravoGalleryApp.Controllers
         [HttpPost]
         public HttpResponseMessage PostUser([FromBody]User user)
         {
+            // Validation
+            if (user.Username == null || user.Username == string.Empty)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.PartialContent, "Username is mandatory");
+            }
+
             var theUser = repos.UserRepo.GetAll().FirstOrDefault(u => u.Username == user.Username);
 
+            int userId;
             if (theUser == null)
             {
                 repos.UserRepo.Add(user);
+                userId = user.UserId;
+            }
+            else 
+            {
+                userId = theUser.UserId;
             }
 
             if (ModelState.IsValid)
             {
-                User userEntity = this.repos.UserRepo.Get(user.UserId);
+                User userEntity = this.repos.UserRepo.Get(userId);
 
                 UserModel userModel = UserModel.CreateUserModelFromEntity(userEntity);
 
@@ -45,7 +57,7 @@ namespace JohnnyBravoGalleryApp.Controllers
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
             }
         }
     }

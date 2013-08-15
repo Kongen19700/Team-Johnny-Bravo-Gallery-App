@@ -37,19 +37,46 @@ namespace JohnnyBravoGalleryApp.Controllers
             return albumModel;
         }
 
+        [HttpPost]
         public HttpResponseMessage PostAlbum([FromBody]Album album)
         {
-            //TODO: validation
+            // Validation
+            if (album.UserId == 0)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.PartialContent, "Iser is mandatory");
+            }
 
-            this.repos.AlbumRepo.Add(album);
+            if (album.ParentAlbumId == null || album.ParentAlbumId == 0)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.PartialContent, "Parent album is mandatory");
+            }
 
-            Album entityAlbum = this.repos.AlbumRepo.Get(album.AlbumId);
+            if (album.Title == null || album.Title == string.Empty)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.PartialContent, "Album title is mandatory");
+            }
 
-            AlbumModel albumModel = AlbumFullModel.CreateFullAlbumModelFromEntity(entityAlbum);
+            if (this.repos.AlbumRepo.GetAll().Any(a => a.ParentAlbumId == album.ParentAlbumId && a.Title == album.Title))
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Album title exists in the current context");
+            }
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, albumModel);
-            response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = albumModel.AlbumId }));
-            return response;
+            if (ModelState.IsValid)
+            {
+                this.repos.AlbumRepo.Add(album);
+
+                Album entityAlbum = this.repos.AlbumRepo.Get(album.AlbumId);
+
+                AlbumModel albumModel = AlbumFullModel.CreateFullAlbumModelFromEntity(entityAlbum);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, albumModel);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = albumModel.AlbumId }));
+                return response;
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+            }
         }
     }
 }

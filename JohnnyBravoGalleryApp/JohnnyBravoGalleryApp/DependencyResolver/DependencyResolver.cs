@@ -36,6 +36,10 @@ namespace JohnnyBravoGalleryApp.DependencyResolver
             {
                 return new ImagesController(repos);
             }
+            else if (serviceType == typeof(ImageController))
+            {
+                return new ImageController(repos);
+            }
             else if (serviceType == typeof(UsersController))
             {
                 return new UsersController(repos);
@@ -52,6 +56,15 @@ namespace JohnnyBravoGalleryApp.DependencyResolver
             {
                 return null;
             }
+        }
+
+        public static AllRepositories GetAllRepositories()
+        {
+            return new AllRepositories(
+                new EfRepository<Album>(new GalleryEntities()),
+                new EfRepository<Image>(new GalleryEntities()),
+                new EfRepository<User>(new GalleryEntities()),
+                new EfRepository<Comment>(new GalleryEntities()));
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
