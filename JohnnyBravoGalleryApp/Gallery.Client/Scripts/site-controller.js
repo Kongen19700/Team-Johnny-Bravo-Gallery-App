@@ -259,6 +259,10 @@ var SiteController = Class.create({
             });
         })
 
+        this.root.on('click', '#btn-close-error-message', function () {
+            $('.error-message').fadeOut(1000, function () { $('.error-message').remove() });
+        });
+
         $('body').on('click', '#logout', function () {
             self.service.clearUserData();
             self.root.html("");
