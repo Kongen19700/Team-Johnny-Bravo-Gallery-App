@@ -71,7 +71,7 @@ namespace JohnnyBravoGalleryApp.Controllers
         private void CommentNotification(Comment comment)
         {
             string username = comment.Image.Album.User.Username.ToLower();
-            string message = comment.User.Username + " has commented your image " + comment.Image.Title;
+            string message = comment.User.Username + " has commented on image " + comment.Image.Title;
             
             string channel = username + "_notifications";
 
