@@ -45,7 +45,7 @@ namespace Gallery.Repositories
 
         private void ReinitializeContext()
         {
-            this.Context = (DbContext) Activator.CreateInstance(this.Context.GetType(), null);
+            this.Context = (DbContext)Activator.CreateInstance(this.Context.GetType(), null);
             this.DbSet = this.Context.Set<T>();
         }
 

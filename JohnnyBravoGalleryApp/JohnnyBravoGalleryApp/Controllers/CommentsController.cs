@@ -30,9 +30,9 @@ namespace JohnnyBravoGalleryApp.Controllers
             if (ModelState.IsValid)
             {
                 this.repos.CommentRepo.Add(comment);
-                var newCom = this.repos.CommentRepo.Get(comment.CommentId);
+                var commentEntity = this.repos.CommentRepo.Get(comment.CommentId);
 
-                CommentModel commentModel = CommentModel.CreateCommentModelFromEntity(newCom);
+                CommentModel commentModel = CommentModel.CreateCommentModelFromEntity(commentEntity);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, commentModel);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = commentModel.CommentId }));

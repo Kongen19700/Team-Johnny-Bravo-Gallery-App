@@ -43,7 +43,9 @@ namespace JohnnyBravoGalleryApp.Controllers
 
             this.repos.AlbumRepo.Add(album);
 
-            AlbumModel albumModel = AlbumFullModel.CreateFullAlbumModelFromEntity(album);
+            Album entityAlbum = this.repos.AlbumRepo.Get(album.AlbumId);
+
+            AlbumModel albumModel = AlbumFullModel.CreateFullAlbumModelFromEntity(entityAlbum);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, albumModel);
             response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = albumModel.AlbumId }));

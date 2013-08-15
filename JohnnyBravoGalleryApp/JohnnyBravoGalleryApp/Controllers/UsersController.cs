@@ -35,7 +35,9 @@ namespace JohnnyBravoGalleryApp.Controllers
 
             if (ModelState.IsValid)
             {
-                UserModel userModel = UserModel.CreateUserModelFromEntity(user);
+                User userEntity = this.repos.UserRepo.Get(user.UserId);
+
+                UserModel userModel = UserModel.CreateUserModelFromEntity(userEntity);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, userModel);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = userModel.UserId }));
