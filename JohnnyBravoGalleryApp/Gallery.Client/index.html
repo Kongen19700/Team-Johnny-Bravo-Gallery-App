@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Gallery App</title>
+    <script src="Scripts/class.js"></script>
+    <script src="Scripts/html-escape.js"></script>
+    <script src="Scripts/httpRequester.js"></script>
+    <script src="Scripts/jquery-2.0.3.js"></script>
+    <script src="Scripts/service-manager.js"></script>
+    <script src="Scripts/site-controller.js"></script>
+</head>
+<body>
+    <div id="main-container"></div>
+    <script>
+        var siteController = new SiteController('http://team-johnny-bravo-gallery-app.apphb.com/api/', '#main-container');
+        siteController.render();
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿body {
+}
+
+
+div.error-message {
+    z-index:999;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 300px;
+    height: 115px;
+    overflow: auto;
+    color: red;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 15px 35px 5px 130px;
+    background: url('../images/error.png') no-repeat #ebbbba center left;
+}
+
+
+    div.error-message #btn-close-error-message, #btn-close-game-field {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        border: 2px solid black;
+        border-radius: 10px;
+        color: black;
+        padding: 3px 5px;
+        cursor: pointer;
+    }
+
+        div.error-message #btn-close-error-message:hover, #btn-close-game-field:hover {
+            background-color: red;
+        }

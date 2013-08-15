@@ -1,0 +1,5 @@
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Client\bin\Gallery.Client.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Client\bin\Gallery.Client.pdb
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Client\obj\Debug\Gallery.Client.csprojResolveAssemblyReference.cache
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Client\obj\Debug\Gallery.Client.dll
+C:\Users\Viktor\Desktop\Johnny Bravo - Teamwork\Team-Johnny-Bravo-Gallery-App\Team-Johnny-Bravo-Gallery-App\JohnnyBravoGalleryApp\Gallery.Client\obj\Debug\Gallery.Client.pdb
