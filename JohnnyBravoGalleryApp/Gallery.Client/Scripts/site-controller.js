@@ -78,8 +78,8 @@ var SiteController = Class.create({
              '<div id="create-upload">' +
                 '<div id="upload">' +
                     '<form method="post" style="width:45%"' +
-                    //' action="http://team-johnny-bravo-gallery-app.apphb.com/images/PostImage" id="upload-form"> ' +
-                    ' action="http://localhost:51015/images/PostImage" id="upload-form"> ' +
+                    ' action="http://team-johnny-bravo-gallery-app.apphb.com/images/PostImage" id="upload-form"> ' +
+                    //' action="http://localhost:51015/images/PostImage" id="upload-form"> ' +
                     '<div class="demo-section">                                                              ' +
                         '<input name="title" id="title" type="text" placeholder="Image title" />' +
                         '<input name="file" id="filesForm" type="file"/>                                        ' +
