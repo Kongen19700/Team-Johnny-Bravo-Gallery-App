@@ -32,14 +32,14 @@ namespace JohnnyBravoGalleryApp.Controllers
             this.repos = repos;
         }
 
-        public HttpResponseMessage PostImage(ImageUploadModel imageUploadModel)
+        public ActionResult PostImage(ImageUploadModel imageUploadModel)
         {
             // Validation
             if (imageUploadModel.AlbumId == 0)
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.PartialContent);
                 errorResponse.Content = new StringContent("Image album is mandatory");
-                return errorResponse;
+                //return errorResponse;
                 throw new HttpResponseException(errorResponse);
             }
 
@@ -47,7 +47,7 @@ namespace JohnnyBravoGalleryApp.Controllers
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.PartialContent);
                 errorResponse.Content = new StringContent("No file provided");
-                return errorResponse;
+                //return errorResponse;
                 throw new HttpResponseException(errorResponse);
             }
 
@@ -55,7 +55,7 @@ namespace JohnnyBravoGalleryApp.Controllers
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.PartialContent);
                 errorResponse.Content = new StringContent("Image title is mandatory");
-                return errorResponse;
+                //return errorResponse;
                 throw new HttpResponseException(errorResponse);
             }
 
@@ -63,7 +63,7 @@ namespace JohnnyBravoGalleryApp.Controllers
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.Conflict);
                 errorResponse.Content = new StringContent("Image title exists in the current album");
-                return errorResponse;
+                //return errorResponse;
                 throw new HttpResponseException(errorResponse);
             }
 
@@ -75,7 +75,7 @@ namespace JohnnyBravoGalleryApp.Controllers
                 {
                     HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.NotFound);
                     errorResponse.Content = new StringContent("No album with such id exists");
-                    return errorResponse;
+                    //return errorResponse;
                     throw new HttpResponseException(errorResponse);
                 }
                 
@@ -97,14 +97,16 @@ namespace JohnnyBravoGalleryApp.Controllers
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent("Image imported successfully");
                 //response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = imageModel.ImageId }));
-                 return response;
+                //return response;
             }
             else
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.BadRequest);
                 errorResponse.Content = new StringContent("Bad request");
-                return errorResponse;
+                //return errorResponse;
             }
+
+            return View();
         }
 
         private string UploadImage(string username, HttpPostedFileBase file)

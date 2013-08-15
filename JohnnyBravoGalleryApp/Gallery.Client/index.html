@@ -13,13 +13,41 @@
     <script src="Scripts/service-manager.js"></script>
     <script src="Scripts/site-controller.js"></script>
     <script src="Scripts/kendo.all.min.js"></script>
+    <!--<script src="http://cdn.pubnub.com/pubnub-3.5.3.min.js"></script>-->
+
 </head>
 <body>
+    <div id="test-div"></div>
     <div id="main-container"></div>
-    <script>
-        var siteController = new SiteController('http://team-johnny-bravo-gallery-app.apphb.com/api/', '#main-container');
 
-        //var siteController = new SiteController('http://localhost:51015/api/', '#main-container');
+    <div id="notification-container">
+        <div
+            pub-key="pub-c-3f3b9dbe-c842-48bd-a306-938f4d1d36ad"
+            sub-key="sub-c-eaa6a17c-05c5-11e3-a005-02ee2ddab7fe"
+            ssl="off" origin="pubsub.pubnub.com" id="pubnub">
+        </div>
+        <script src="http://cdn.pubnub.com/pubnub-3.5.3.min.js"></script>
+        <h5>Listening for messages from Pubnub...</h5>
+        <textarea id="messagesArea" style="width: 300px; height: 300px"></textarea>
+        <script>
+            (function () {
+                document.write("")
+                PUBNUB.subscribe({
+                    channel: "testuser_notifications",
+                    callback: function (message) {
+                        // Received a message --> print it in the page
+                        document.getElementById('messagesArea').innerHTML += message + '\n';
+                    }
+                });
+                //PUBNUB.unsubscribe({ channel: ['testuser_notifications'] })
+            })();
+        </script>
+    </div>
+
+    <script>
+        //var siteController = new SiteController('http://team-johnny-bravo-gallery-app.apphb.com/api/', '#main-container');
+
+        var siteController = new SiteController('http://localhost:51015/api/', '#main-container');
         siteController.render();
     </script>
 </body>

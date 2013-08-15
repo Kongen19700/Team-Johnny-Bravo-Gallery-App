@@ -23,6 +23,14 @@ var SiteController = Class.create({
                    + '<span id="user-nickname">' + this.service.getNickname() + '</span>' +
                    '<button id="logout" class="btn btn-info">Logout</button></div>');
 
+            PUBNUB.subscribe({
+                channel: "testuser_notifications",
+                callback: function (message) {
+                    document.getElementById('messagesArea').innerHTML += message + '\n';
+                },
+                error: function (data) { console.log(data) }
+            });
+
             this.service.gallery.getAllGalleries(
                 function (data) {
                     self.renderGalleries(data)
@@ -65,32 +73,32 @@ var SiteController = Class.create({
 
     renderAlbum: function (receivedData) {
 
-    var albumHtml =
-    '<div id="gallery">' +
-         '<div id="create-upload">' +
-            '<div id="upload">' +
-                '<form method="post" style="width:45%"' +
-                ' action="http://team-johnny-bravo-gallery-app.apphb.com/images/PostImage" id="upload-form"> ' +      
-                //' action="http://localhost:51015/images/PostImage" id="upload-form"> ' +
-                '<div class="demo-section">                                                              ' +
-                    '<input name="title" id="title" type="text" placeholder="Image title" />' +
-                    '<input name="file" id="filesForm" type="file"/>                                        ' +
-                    '<input name="albumId" id="albumId" value="'+ receivedData.AlbumId +'" type="hidden" />'+
-                    '<input type="submit" value="Submit" id="submit-btn" class="k-button btn btn-info" />' +
-                '</div>                                                                                  ' +
-                '</form>                                                                                 ' +
-                '<script>                                                                                ' +
-                '$(document).ready(function () {                                                         ' +
-                '$("#filesForm").kendoUpload();                                                          ' +
-                '});                                                                                     ' +
-                '</script>                                                                               ' +
-           '</div>' + // upload 
-            '<div id="create-album">                                                               ' +
-            '    <input type="text" id="tb-new-album-title" placeholder="album name"/> ' +
-            '    <button id="btn-create-album" class="btn btn-info">Add Album</button>      ' +
-            '</div>' + //create 
-        '</div>' + //create upload 
-        '<div id="album-content" data-current-album-id="' + receivedData.AlbumId + '">';
+        var albumHtml =
+        '<div id="gallery">' +
+             '<div id="create-upload">' +
+                '<div id="upload">' +
+                    '<form method="post" style="width:45%"' +
+                    //' action="http://team-johnny-bravo-gallery-app.apphb.com/images/PostImage" id="upload-form"> ' +
+                    ' action="http://localhost:51015/images/PostImage" id="upload-form"> ' +
+                    '<div class="demo-section">                                                              ' +
+                        '<input name="title" id="title" type="text" placeholder="Image title" />' +
+                        '<input name="file" id="filesForm" type="file"/>                                        ' +
+                        '<input name="albumId" id="albumId" value="' + receivedData.AlbumId + '" type="hidden" />' +
+                        '<input type="submit" value="Submit" id="submit-btn" class="k-button btn btn-info" />' +
+                    '</div>                                                                                  ' +
+                    '</form>                                                                                 ' +
+                    '<script>                                                                                ' +
+                    '$(document).ready(function () {                                                         ' +
+                    '$("#filesForm").kendoUpload();                                                          ' +
+                    '});                                                                                     ' +
+                    '</script>                                                                               ' +
+               '</div>' + // upload 
+                '<div id="create-album">                                                               ' +
+                '    <input type="text" id="tb-new-album-title" placeholder="album name"/> ' +
+                '    <button id="btn-create-album" class="btn btn-info">Add Album</button>      ' +
+                '</div>' + //create 
+            '</div>' + //create upload 
+            '<div id="album-content" data-current-album-id="' + receivedData.AlbumId + '">';
 
 
         albumHtml += '<h2>' + receivedData.Title.htmlEscape() + '</h2>';
