@@ -32,7 +32,7 @@ namespace JohnnyBravoGalleryApp.Controllers
             this.repos = repos;
         }
 
-        public ActionResult PostImage(ImageUploadModel imageUploadModel)
+        public HttpResponseMessage PostImage(ImageUploadModel imageUploadModel)
         {
             // Validation
             if (imageUploadModel.AlbumId == 0)
@@ -71,7 +71,8 @@ namespace JohnnyBravoGalleryApp.Controllers
                 {
                     HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.NotFound);
                     errorResponse.Content = new StringContent("No album with such id exists");
-                  //  return errorResponse; 
+                    throw new HttpResponseException(errorResponse);
+                    // return errorResponse; 
                 }
                 
                 imageUploadModel.Url = UploadImage(album.User.Username, imageUploadModel.File);
@@ -92,16 +93,16 @@ namespace JohnnyBravoGalleryApp.Controllers
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent("Image imported successfully");
                 //response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = imageModel.ImageId }));
-               // return response;
+                return response;
             }
             else
             {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.BadRequest);
                 errorResponse.Content = new StringContent("Bad request");
-              //  return errorResponse;
+                return errorResponse;
             }
 
-            return View();
+            //return View();
         }
 
         private string UploadImage(string username, HttpPostedFileBase file)
